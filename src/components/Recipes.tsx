@@ -51,7 +51,7 @@ const Recipes = () => {
         <>
           <div className={styles.wrapper}>
             {data.hits.map((r) => (
-              <div className={styles.container} key={r.recipe.label}>
+              <div className={styles.container} key={r.recipe.label + `${Math.floor((Math.random() * 100))}`}>
                 <div>
                   <img src={r.recipe.image} alt={r.recipe.label + " photo"}/>
                 </div>
@@ -70,7 +70,7 @@ const Recipes = () => {
                 </div>
                 <div>
                   <h3>Ingredients:</h3>
-                  {r.recipe.ingredients.map((i) => <div>{i.food}</div>)}
+                  {r.recipe.ingredients.map((i) => <div key={i.food + `${Math.floor((Math.random() * 100))}`}>{i.food}</div>)}
                 </div>
                 <div className={styles.wrapper_btn}>
                   <a className={styles.button} href={r.recipe.shareAs}>Подробнее</a>
