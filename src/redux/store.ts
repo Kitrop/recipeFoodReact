@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import {configureStore} from "@reduxjs/toolkit";
 import {recipeApi} from "./api/api";
 import {useDispatch} from "react-redux";
 import formSliceReducer from "./slices/formSlice";

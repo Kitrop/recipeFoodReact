@@ -2,33 +2,39 @@ import {useDispatch} from "react-redux";
 import {updateFormData} from "../redux/slices/formSlice";
 import React from "react";
 import {useNavigate} from "react-router-dom";
+import home from '../styles/home.module.css'
 
 const Home = () => {
 
 
   const dispatch = useDispatch()
-  const navigate = useNavigate();
+
+  const navigate = useNavigate()
+
   const handleSubmit = (event: any) => {
     event.preventDefault()
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData.entries());
+    localStorage.setItem('data', JSON.stringify(data))
     dispatch(updateFormData(data))
     navigate('/recipes')
   }
 
   return (
     <>
-      <form name={'form'} onSubmit={handleSubmit}>
+      <form className={home.form} name={'form'} onSubmit={handleSubmit}>
         <div>
-          <input name={'q'} id={'q'} type={"text"} placeholder={"enter the ingredient"}/>
+          <label>Enter the ingredient(s)</label><br/>
+          <input className={home.soloInput} name={'q'} id={'q'} type={"text"} placeholder={"enter the ingredient"}/>
         </div>
         <div>
-          <input name={'minIngredients'} type={"text"} placeholder={"Enter the minimum number of ingredients "}/>
-          <input name={'maxIngredients'} type={"text"} placeholder={"Enter the maximum number of ingredients "}/>
+          <label>Enter the minimum and maximum amounts of ingredients</label><br/>
+          <input style={{marginRight: 10 + 'px'}} className={home.input} name={'minIngredients'} type={"text"} placeholder={"Enter the minimum number of ingredients "}/>
+          <input className={home.input} name={'maxIngredients'} type={"text"} placeholder={"Enter the maximum number of ingredients "}/>
         </div>
         <div>
-          <select name={'diet'}>
-            <option selected value={""}></option>
+          <select name={'diet'} defaultValue={""}>
+            <option value={""}></option>
             <option value={"balanced"}>balanced</option>
             <option value={"high-fiber"}>high fiber</option>
             <option value={"low-carb"}>low carb</option>
@@ -38,8 +44,8 @@ const Home = () => {
           </select>
         </div>
         <div>
-          <select name={'health'}>
-            <option selected value=""></option>
+          <select name={'health'} defaultValue={""}>
+            <option value=""></option>
             <option value="alcohol-cocktail"> alcohol-cocktail</option>
             <option value="alcohol-free"> alcohol-free</option>
             <option value="celery-free"> celery-free</option>
@@ -79,8 +85,8 @@ const Home = () => {
           </select>
         </div>
         <div>
-          <select name={'cuisineType'}>
-            <option selected value=""></option>
+          <select name={'cuisineType'} defaultValue={""}>
+            <option  value=""></option>
             <option value="American"> American</option>
             <option value="Asian"> Asian</option>
             <option value="British"> British</option>
@@ -102,8 +108,8 @@ const Home = () => {
           </select>
         </div>
         <div>
-          <select name={'mealType'}>
-            <option selected value=""></option>
+          <select name={'mealType'} defaultValue={""}>
+            <option  value=""></option>
             <option value="Breakfast">Breakfast</option>
             <option value="Dinner">Dinner</option>
             <option value="Lunch">Lunch</option>
@@ -112,8 +118,8 @@ const Home = () => {
           </select>
         </div>
         <div>
-          <select name={'dishType'}>
-            <option selected value=""></option>
+          <select name={'dishType'} defaultValue={""}>
+            <option  value=""></option>
             <option value="Biscuits and cookies"> Biscuits and cookies</option>
             <option value="Bread"> Bread</option>
             <option value="Cereals"> Cereals</option>

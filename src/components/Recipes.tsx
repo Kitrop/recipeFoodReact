@@ -48,7 +48,7 @@ const Recipes = () => {
   const ResultRecipe = () => {
     if (data && data.hits.length > 0) {
       return (
-        <Fragment>
+        <>
           <div className={styles.wrapper}>
             {data.hits.map((r) => (
               <div className={styles.container} key={r.recipe.label}>
@@ -78,7 +78,7 @@ const Recipes = () => {
               </div>
             ))}
           </div>
-        </Fragment>
+        </>
       );
     } else if (isLoading) {
       return (

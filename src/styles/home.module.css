@@ -1,0 +1,29 @@
+.form {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    flex-direction: column;
+    max-width: 330px;
+    margin: 0 auto;
+}
+
+.form div {
+    margin: 0 auto;
+}
+
+.soloInput {
+    width: 320px;
+    border: 1px solid blue;
+    border-radius: 3px;
+    height: 20px;
+}
+
+.soloInput::placeholder {
+    text-align: center;
+}
+.input {
+    border: 1px solid blue;
+    border-radius: 3px;
+    width: 150px;
+    height: 20px;
+}

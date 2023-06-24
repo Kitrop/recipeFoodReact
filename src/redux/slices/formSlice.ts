@@ -2,21 +2,39 @@ import {createSlice} from "@reduxjs/toolkit";
 import {InitialState} from "../../types/type";
 
 
+const savedDataString = localStorage.getItem('data');
+const savedData = savedDataString ? JSON.parse(savedDataString) : null;
 
 const initialState: InitialState = {
-  q: undefined,
-  minIngredients: undefined,
-  maxIngredients: undefined,
-  diet: undefined,
-  health: undefined,
-  cuisineType: undefined,
-  mealType: undefined,
-  dishType: undefined,
-  minCalories: undefined,
-  maxCalories: undefined,
-  minTime: undefined,
-  maxTime: undefined
+  q: savedData.q,
+  minIngredients: savedData.minIngredients,
+  maxIngredients: savedData.maxIngredients,
+  diet: savedData.diet,
+  health: savedData.health,
+  cuisineType: savedData.cuisineType,
+  mealType: savedData.mealType,
+  dishType: savedData.dishType,
+  minCalories: savedData.minCalories,
+  maxCalories: savedData.maxCalories,
+  minTime: savedData.minTime,
+  maxTime: savedData.maxTime
 }
+
+// const initialState: InitialState = {
+//   q: undefined,
+//   minIngredients: undefined,
+//   maxIngredients: undefined,
+//   diet: undefined,
+//   health: undefined,
+//   cuisineType: undefined,
+//   mealType: undefined,
+//   dishType: undefined,
+//   minCalories: undefined,
+//   maxCalories: undefined,
+//   minTime: undefined,
+//   maxTime: undefined
+// }
+
 const formSlice = createSlice({
   name: 'form',
   initialState: initialState,
